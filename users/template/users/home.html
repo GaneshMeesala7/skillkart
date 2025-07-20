@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SkillKart - Register Skills</title>
+</head>
+<body>
+    <h2>Register Your Skills</h2>
+    {% extends 'users/base.html' %}
+
+    {% block content %}
+    <form method="POST" class="card p-4 shadow">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Profile</button>
+    </form>
+    {% endblock %}
+
+
+</body>
+</html>

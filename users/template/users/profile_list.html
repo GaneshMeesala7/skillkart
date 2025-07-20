@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profiles</title>
+</head>
+<body>
+    <h1>Saved User Profiles</h1>
+    {% extends 'users/base.html' %}
+
+    {% block content %}
+    <form method="GET" class="mb-3">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+    </form>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Skills</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+            <tr>
+                <td>{{ profile.name }}</td>
+                <td>{{ profile.skills }}</td>
+                <td>{{ profile.email }}</td>
+                <td>
+                    <a href="{% url 'edit_profile' profile.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'delete_profile' profile.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+
+    <a href="/">Go Back</a>
+</body>
+</html>
